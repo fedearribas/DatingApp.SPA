@@ -1,3 +1,4 @@
+import { appRoutes } from './routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +11,11 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_services/alertify.service';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { ListsComponent } from './lists/lists.component';
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 
@@ -21,16 +27,22 @@ import { AlertifyService } from './_services/alertify.service';
 ,
     HomeComponent,
     RegisterComponent
+,
+    MemberListComponent,
+    MessagesComponent,
+    ListsComponent
 ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     AuthService,
-    AlertifyService
+    AlertifyService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
