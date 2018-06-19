@@ -1,3 +1,45 @@
 .card {
   margin-top: 10px;
 }
+
+.card:hover img {
+  transform: scale(1.2, 1.2);
+  transition-duration:  500ms;
+  transition-timing-function: ease-out;
+  opacity: 0.7;
+}
+
+.card-img {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.member-icons {
+  position: absolute;
+  bottom:-30%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0;
+  z-index: 0;
+}
+
+.img-container:hover .member-icons {
+  bottom: -3%;
+  opacity: 1;
+  z-index: 5;
+}
+
+.animate {
+  transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 992px) and (max-width: 1200px){
+  .btn {
+    padding: 2px 4px;
+    font-size: 80%;
+    line-height: 1;
+  }
+}
