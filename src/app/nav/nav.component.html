@@ -30,7 +30,7 @@
           <a class="nav-link dropdown-toggle" dropdownToggle>Welcome {{ authService.decodedToken?.unique_name }} </a>
           <div class="dropdown-menu" *dropdownMenu>
             <li class="nav-item">
-              <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Edit Profile</a>
+              <a class="dropdown-item" [routerLink]="['/member/edit']" routerLinkActive="router-link-active" ><i class="fa fa-user"></i> Edit Profile</a>
             </li>
             <li class="nav-item">
               <a class="dropdown-item" (click)="logout()" href="#"><i class="fa fa-sign-out"></i> Logout</a>
