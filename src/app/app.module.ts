@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -20,6 +21,8 @@ import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { AuthModule } from './auth/auth.module';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 
 @NgModule({
   declarations: [
@@ -40,13 +43,16 @@ import { AuthModule } from './auth/auth.module';
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AuthModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [
     AuthService,
     AlertifyService,
     AuthGuard,
-    UserService
+    UserService,
+    MemberDetailResolver,
+    MemberListResolver
   ],
   bootstrap: [AppComponent]
 })
