@@ -1,10 +1,11 @@
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { UserService } from './_services/user.service';
 import { appRoutes } from './routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -18,9 +19,7 @@ import { ListsComponent } from './lists/lists.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberCardComponent } from './members/member-card/member-card.component';
-
-
-
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +27,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     NavComponent,
     HomeComponent,
     RegisterComponent,
+    MemberDetailComponent,
     MemberCardComponent,
     MemberListComponent,
     MessagesComponent,
@@ -38,7 +38,9 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     HttpModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AuthModule,
+    TabsModule.forRoot()
   ],
   providers: [
     AuthService,
