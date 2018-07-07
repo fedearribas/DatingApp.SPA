@@ -1,8 +1,11 @@
+import { AlertifyService } from './../../_services/alertify.service';
+import { UserService } from './../../_services/user.service';
 import { AuthService } from './../../_services/auth.service';
 import { environment } from './../../../environments/environment';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Photo } from '../../_models/photo';
 import { FileUploader } from 'ng2-file-upload';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-photo-editor',
@@ -16,8 +19,11 @@ export class PhotoEditorComponent implements OnInit {
   hasBaseDropZoneOver = false;
   hasAnotherDropZoneOver = false;
   baseUrl = environment.apiUrl;
+  currentMain: Photo;
+  @Output() getMemeberPhotoChange = new EventEmitter<string>();
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserService,
+    private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.initializeUploader();
@@ -25,6 +31,31 @@ export class PhotoEditorComponent implements OnInit {
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
+  }
+
+  setMainPhoto(photo: Photo) {
+    this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
+      this.currentMain = _.findWhere(this.photos, {isMain: true});
+      this.currentMain.isMain = false;
+      photo.isMain = true;
+      this.authService.changeMemberPhoto(photo.url);
+      this.authService.currentUser.photoUrl = photo.url;
+      localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+    },
+    error => {
+      this.alertify.error(error);
+    });
+  }
+
+  deletePhoto(photo: Photo) {
+    this.alertify.confirm('Are you sure you want to delete this photo?', () => {
+      this.userService.deletePhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
+        this.photos.splice(_.findIndex(this.photos, {id: photo.id}), 1);
+        this.alertify.success('Photo has been deleted.');
+      }, error => {
+        this.alertify.error('Failed to delete photo');
+      });
+    });
   }
 
   initializeUploader() {
