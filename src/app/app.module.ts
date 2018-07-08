@@ -1,3 +1,4 @@
+import { ListsResolver } from './_resolvers/list.resolver';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { UserService } from './_services/user.service';
 import { appRoutes } from './routes';
@@ -68,7 +69,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     UserService,
     MemberDetailResolver,
     MemberListResolver,
-    MemberEditResolver
+    MemberEditResolver,
+    ListsResolver
   ],
   bootstrap: [AppComponent]
 })
