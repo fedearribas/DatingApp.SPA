@@ -1,0 +1,11 @@
+#divButtonHeader {
+  margin-bottom: 15px;
+}
+
+.rounded-circle {
+  max-height: 50px;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}

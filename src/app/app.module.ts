@@ -1,3 +1,5 @@
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { MessagesResolver } from './_resolvers/message.resolver';
 import { ListsResolver } from './_resolvers/list.resolver';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { UserService } from './_services/user.service';
@@ -44,7 +46,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     MessagesComponent,
     ListsComponent,
     PhotoEditorComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    MemberMessagesComponent
 ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
     MemberDetailResolver,
     MemberListResolver,
     MemberEditResolver,
-    ListsResolver
+    ListsResolver,
+    MessagesResolver
   ],
   bootstrap: [AppComponent]
 })

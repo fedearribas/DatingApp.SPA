@@ -1,4 +1,4 @@
-import { AlertifyService } from './../../_services/alertify.service';
+import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../_models/user';

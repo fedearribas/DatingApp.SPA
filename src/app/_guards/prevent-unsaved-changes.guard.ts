@@ -1,4 +1,4 @@
-import { MemberEditComponent } from './../members/member-edit/member-edit.component';
+import { MemberEditComponent } from '../members/member-edit/member-edit.component';
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 

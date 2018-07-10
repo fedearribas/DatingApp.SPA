@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../_services/auth.service';
+import { AuthService } from '../_services/auth.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AlertifyService } from '../_services/alertify.service';
-import { FormGroup, FormControl, Validators, FormBuilder } from '../../../node_modules/@angular/forms';
-import { BsDatepickerConfig } from '../../../node_modules/ngx-bootstrap/datepicker';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { User } from '../_models/user';
 
 @Component({

@@ -1,4 +1,4 @@
-import { User } from './../_models/user';
+import { User } from '../_models/user';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
