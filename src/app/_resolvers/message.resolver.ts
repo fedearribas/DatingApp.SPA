@@ -2,9 +2,8 @@ import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { AlertifyService } from '../_services/alertify.service';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Message } from '../_models/message';
 import { AuthService } from '../_services/auth.service';
 
@@ -21,11 +20,13 @@ export class MessagesResolver implements Resolve<Message[]> {
   resolve(route: ActivatedRouteSnapshot): Observable<Message[]> {
     return this.userService.getMessages(this.authService.currentUser.id, this.pageNumber,
           this.pageSize, this.messageContainer)
-          .catch(error => {
+          .pipe(
+            catchError(error => {
             this.alertify.error('Problem retrieving data');
             this.router.navigate(['/home']);
-            return Observable.of(null);
-    });
+            return of(null);
+        })
+    );
   }
 
 }

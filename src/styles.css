@@ -6,3 +6,7 @@ margin-top: 100px;
 .member-tabset ul {
   margin-bottom: 15px !important;
 }
+
+.clickable {
+  cursor: pointer;
+}
